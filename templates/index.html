@@ -1,0 +1,141 @@
+$def with (html, pages, page)
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="nojs ms lt_ie7" lang="en">
+<![endif]-->
+
+<!--[if IE 7]>
+<html class="nojs ms ie7" lang="en">
+<![endif]-->
+
+<!--[if IE 8]>
+<html class="nojs ms ie8" lang="en">
+<![endif]-->
+
+<!--[if gt IE 8]>
+<html class="nojs ms" lang="en">
+<![endif]-->
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="iKreativ">
+    <meta name="description" content="Workless - A classy HTML5, CSS3 framework">
+    <meta name="keywords"
+          content="workless, classy, css, framework, jquery, bootstrap, h5bp, twitter, bolierplate, jquery, html5, ikreativ">
+    <link rel="shortcut icon" href="/static/assets/img/favicon.png">
+
+    <!-- Mobile Viewport -->
+    <meta name="viewport" content="width=device-width">
+
+    <title>Workless 基于Html5与CSS3的简洁框架</title>
+
+    <link href="/static/assets/css/plugins.css" rel="stylesheet">
+    <link href="/static/assets/css/workless.css" rel="stylesheet">
+    <link href="/static/assets/css/scaffolding.css" rel="stylesheet">
+    <link href="/static/assets/css/typography.css" rel="stylesheet">
+    <link href="/static/assets/css/forms.css" rel="stylesheet">
+    <link href="/static/assets/css/tables.css" rel="stylesheet">
+    <link href="/static/assets/css/buttons.css" rel="stylesheet">
+    <link href="/static/assets/css/alerts.css" rel="stylesheet">
+    <link href="/static/assets/css/tabs.css" rel="stylesheet">
+    <link href="/static/assets/css/pagination.css" rel="stylesheet">
+    <link href="/static/assets/css/breadcrumbs.css" rel="stylesheet">
+    <link href="/static/assets/css/icons.css" rel="stylesheet">
+    <link href="/static/assets/css/helpers.css" rel="stylesheet">
+    <link href="/static/assets/css/print.css" rel="stylesheet">
+    <link href="/static/assets/css/application.css" rel="stylesheet">
+
+    <!--[if lt IE 8]>
+    <script src="/static/assets/js/ie_font.js"></script>
+    <![endif]-->
+</head>
+
+<body class="blueish" id="top" onload="prettyPrint()">
+
+<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6 -->
+<!--[if lt IE 7]>
+<p>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a
+        href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.
+</p>
+<![endif]-->
+
+<!-- wrapper -->
+<section class="boxed">
+
+    <!-- main -->
+    <section id="main">
+
+        <!-- logo -->
+        <div id="logo">
+            <a href="#">
+                <img src="/static/assets/img/logo.png" alt="Workless"/>
+            </a>
+            <small>web.py简易论坛</small>
+        </div>
+        <!-- /logo -->
+
+        <!-- nav -->
+        <nav id="primary">
+            <ul>
+                <li><a href="index.html">注册</a></li>
+                <li><a href="forms.html">登录</a></li>
+                <li><a href="forms2.html">发帖</a></li>
+            </ul>
+        </nav>
+        <!-- /nav -->
+
+        <hr>
+
+        <!-- header -->
+        <header class="bg_shadow">
+            <h3 style="text-align: center">基于web.py框架的简易论坛，采用Sqlite做为数据库</h3>
+        </header>
+        <!-- /header -->
+        <div class="one_full">
+            <h4>论坛内容</h4>
+
+            <table class="table-striped">
+                <thead>
+                <tr>
+                    <th>回复</th>
+                    <th>标题</th>
+                    <th>发帖时间</th>
+                    <th>发布者</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+
+                $:html
+                </tbody>
+            </table>
+
+        </div>
+
+        <hr>
+        <hr>
+        <!-- footer -->
+        <footer class="one_full">
+            <p class="small muted">楚广明进行整合修改 </p>
+        </footer>
+        <!-- /footer -->
+
+    </section>
+    <!-- /main -->
+
+</section>
+<!-- /wrapper -->
+
+<script src="/static/assets/js/jquery-1.7.2.min.js"></script>
+<!-- scripts  -->
+<script src="/static/assets/js/plugins.js"></script>
+<script src="/static/assets/js/application.js"></script>
+<!-- /scripts -->
+
+
+</body>
+</html>

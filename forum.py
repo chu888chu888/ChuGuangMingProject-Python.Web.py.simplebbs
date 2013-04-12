@@ -1,34 +1,43 @@
 # -*- coding: utf-8 -*-
+import sys
+
 import web
+
 import settings
 import model
 import form
 import util
-import urllib
-import sys
+
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 urls = (
-  '/', 'index',
-  '/page/(.*)', 'index',
-  '/add', 'add',
-  '/view/(.*)', 'view',
-  '/imgredirect', 'imgredirect')
+    '/', 'index',
+    '/page/(.*)', 'index',
+    '/add', 'add',
+    '/view/(.*)', 'view',
+    '/imgredirect', 'imgredirect')
 
 app = web.application(urls, globals(), autoreload=True)
 
-def render(params = {}, partial = False):
+
+def render(params={}, partial=False):
+
     global_vars = dict(settings.GLOBAL_PARAMS.items() + params.items())
 
     if partial:
+        print "true"
         return web.template.render('templates/', globals=global_vars)
     else:
+        print "false"
         return web.template.render('templates/', base='layout', globals=global_vars)
+
 
 class about:
     def GET(self):
         return render({'title': settings.SITE_NAME}).about()
+
 
 class add:
     def GET(self):
@@ -47,11 +56,14 @@ class add:
                 else:
                     return render({'title': settings.SITE_NAME}).failed()
 
+
 class index:
-    def GET(self, page = 1):
+    def GET(self, page=1):
         page = int(page)
         html, pages = model.list_post(page)
-        return render({'title': settings.SITE_NAME}).list(html, pages, page)
+        #return render({'title': settings.SITE_NAME}).list(html, pages, page)
+        return render({'title':settings.SITE_NAME},True).index(html,pages,page)
+
 
 class view:
     def GET(self, post_id):
@@ -75,11 +87,13 @@ class view:
                 else:
                     return render({'title': settings.SITE_NAME}).failed()
 
+
 class imgredirect:
     def GET(self):
         i = web.input(url='')
         image_url = i.url
         return web.redirect(image_url)
+
 
 if __name__ == "__main__":
     app.run()
