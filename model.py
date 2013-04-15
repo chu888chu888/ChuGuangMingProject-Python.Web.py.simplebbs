@@ -34,11 +34,20 @@ def list_comment(parent):
     #         i.id) + '">' + i.title + '</a> - <b>' + user.username + '</b> (' + util.humanize_bytes(
     #         len(i.content)) + ') ' + i.created + ' (' + str(count_comment(i.id)) + ')</li>' + list_comment(i.id)
     # output += '</ul>'
-    commentsCount=db.query("SELECT COUNT(*) AS count FROM posts where id="+str(parent))[0]
+    commentsCount = db.query("SELECT COUNT(*) AS count FROM posts where id="+str(parent))[0]
     print commentsCount
     return str(commentsCount.count)
 
-#返回列表
+
+def view_comment(parent):
+    comments = db.select('posts', what='id, title, content, datetime(created) as created, user_id',
+                         where='parent = $parent', order='id DESC', vars=locals())
+    if not comments:
+        return ''
+    return comments
+# 返回列表
+
+
 def list_post(page):
     # perpage = 20
     # offset = (page - 1) * perpage
@@ -72,7 +81,7 @@ def list_post(page):
         output += '<a href="#" class="button red">'+list_comment(i.id)+'</a>'
         output += '</td>'
         output += '<td style="width: 70%">'
-        output += '<h5><a>'+i.title+'</a></h5>'
+        output += '<h4><a href="/view/'+str(i.id)+'">'+i.title+'</a></h4>'
         output += '</td>'
         output += ' <td>'
         output += ' <h5><a>'+i.created+'</a></h5>'
@@ -122,4 +131,3 @@ def register_or_login(username, password):
 def login(username, password):
     pwdhash = hashlib.md5(password).hexdigest()
     return db.where('users', username=username, password=pwdhash)
-

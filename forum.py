@@ -27,10 +27,10 @@ def render(params={}, partial=False):
     global_vars = dict(settings.GLOBAL_PARAMS.items() + params.items())
 
     if partial:
-        print "true"
+        #print "true"
         return web.template.render('templates/', globals=global_vars)
     else:
-        print "false"
+        #print "false"
         return web.template.render('templates/', base='layout', globals=global_vars)
 
 
@@ -70,8 +70,11 @@ class view:
         post, user = model.view_post(post_id)
         f = form.post_add_form(post_id)
         f.id = post_id
-        t = model.list_comment(post_id)
-        return render({'title': settings.SITE_NAME, 'make_html': util.make_html}).view(post, user, t, f)
+        #t = model.list_comment(post_id)
+        t=model.view_comment(post_id)
+        #return post_id
+        #return render({'title': settings.SITE_NAME, 'make_html': util.make_html}).view(post, user, t, f)
+        return render({'title': settings.SITE_NAME, 'make_html': util.make_html},True).viewpost(post, user, t, f)
 
     def POST(self, post_id):
         post, user = model.view_post(post_id)
